@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+{% block content %}
+<form method="POST">
+    {{ teacher_form.as_p }}
+    {% csrf_token %}
+    	
+<div class="container">
+	<input class="btn btn-primary" type="submit" value="Register" >
+</div>
+    
+</form>
+{% endblock %}

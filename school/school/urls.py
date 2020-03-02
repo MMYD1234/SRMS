@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from officer import views
-
+#from teacher import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', include('officer.urls')),
     path('register/', views.register, name='register_page'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('register/teacher/', views.registerTeacher, name='register_teacher_page'),
 ]
