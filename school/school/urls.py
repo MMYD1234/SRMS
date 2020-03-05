@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from officer import views
+from officer.views import AssignTeacherView, AssignTeacherDetailView
 #from teacher import views
 
 urlpatterns = [
@@ -24,4 +25,8 @@ urlpatterns = [
     path('register/', views.register, name='register_page'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('register/teacher/', views.registerTeacher, name='register_teacher_page'),
+    path('create/grade/', views.createGrade, name='create_grade'),
+    path('create/course/', views.createCourse, name='create_course'),
+    path('teacher/assign/', AssignTeacherView.as_view(), name='assign_teacher'),
+    path('teacher/assign/detail/', AssignTeacherDetailView.as_view(), name='assign_teacher_detail'),
 ]
