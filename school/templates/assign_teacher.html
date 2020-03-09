@@ -1,9 +1,14 @@
 {% extends 'index.html' %}
 {% block content %}
-<h1> Assign Teachers </h1>
-<ul>
-    {% for teachers in object_list %}
-        <li> {{ teachers }} </li>
-    {% endfor %}
-</ul>
+<h3> Assign Teachers </h3>
+<form method="POST">
+    {{ assign_teacher_form.as_p }}
+    {% csrf_token %}
+    	
+<div class="container">
+	<input class="btn btn-primary" type="submit" value="Assign" >
+</div>
+    
+</form>
+
 {% endblock %}

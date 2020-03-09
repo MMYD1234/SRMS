@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Teacher
-from .forms import RegisterForm, CreateGradeForm, CreateCourseForm, RegisterTeacherForm
+from .forms import RegisterForm, CreateGradeForm, CreateCourseForm, RegisterTeacherForm, AssignTeacherForm
 
 # Create your views here.
 def index(request):
@@ -59,10 +59,19 @@ def createCourse(request):
             return index(request)
     return render(request, 'create_course.html', {'course_form' : course_form})
 
-class AssignTeacherView(ListView):
-    model = Teacher
-    template_name = 'assign_teacher.html'
+#class AssignTeacherView(ListView):
+  #  model = Teacher
+   # template_name = 'assign_teacher.html'
 
-class AssignTeacherDetailView(DetailView):
-    model = Teacher
-    template_name = 'assign_teacher_detail.html'
+def assignTeacher(request):
+    assign_teacher_form = AssignTeacherForm()
+    if request.method == "POST":
+        assign_teacher_form = AssignTeacherForm(request.POST)
+        if assign_teacher_form.is_valid():
+            assign_teacher_form.save(commit=True)
+            return index(request)
+    return render(request, 'assign_teacher.html', {'assign_teacher_form': assign_teacher_form})
+    
+
+    
+    

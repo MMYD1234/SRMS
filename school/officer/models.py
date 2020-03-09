@@ -56,3 +56,7 @@ class Teacher(models.Model):
 
     def __str__(self):
         return self.first_name
+
+class CourseGradeTeacher(models.Model):
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, default=1)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, default=1)
